@@ -1,0 +1,28 @@
+
+1.Description of the "after()" function:
+   - The "after()" function takes two parameters: a date object "date1" and an integer "days".
+   - It calculates the date that is "days" number of days after the given date "date1".
+   - The function first extracts the year, month, and day components from the "date1" object.
+   - Then, it calculates the total number of days in the given month by accessing a pre-defined dictionary containing the number of days in each month.
+   - Next, it checks if the given number of days to add ("days") exceeds the remaining days in the month.
+   - If it does, the function subtracts the remaining days in the current month from the total number of days to add, and iterates through the remaining months, updating the total days to add until the remaining days become zero.
+   - Finally, it constructs and returns a new date object representing the date after adding the specified number of days.
+
+2. Algorithm for "before()" function:
+   - The "before()" function takes two parameters: a date object "date1" and an integer "days".
+   - It calculates the date that is "days" number of days before the given date "date1".
+   - The function follows a similar approach to "after()", but instead subtracts the specified number of days from the given date.
+
+3. Algorithm for "doda()" function:
+   - The "doda()" function takes two parameters: a date object "date1" and an integer "months".
+   - It calculates the date that is "months" number of months after the given date "date1".
+   - The function first extracts the year and month components from the "date1" object.
+   - Then, it adds the specified number of months to the current month, adjusting the year if necessary.
+   - It also handles cases where adding the months might exceed 12, in which case it updates the year and resets the month accordingly.
+   - Finally, it constructs and returns a new date object representing the date after adding the specified number of months.
+
+4. Limitations and considerations:
+   - The algorithms assume a standard Gregorian calendar system.
+   - They do not account for leap years or other calendar adjustments.
+   - The algorithms may need to be adjusted for different calendar systems or edge cases.
+   - Further testing and validation are recommended to ensure accuracy and robustness
