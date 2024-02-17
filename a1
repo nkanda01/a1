@@ -1,0 +1,75 @@
+def after(date1, days):
+    # Extract year, month, and day components from date1
+    year = date1.year
+    month = date1.month
+    day = date1.day
+    
+    # Define a dictionary containing the number of days in each month
+    days_in_month = {
+        1: 31, 2: 28, 3: 31, 4: 30, 5: 31, 6: 30,
+        7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31
+    }
+    
+    # Calculate total days in the given month
+    total_days_in_month = days_in_month[month]
+    
+    # Check if adding days exceeds remaining days in the month
+    if day + days > total_days_in_month:
+        days -= (total_days_in_month - day)
+        while days > days_in_month[month]:
+            days -= days_in_month[month]
+            month += 1
+            if month > 12:
+                month = 1
+                year += 1
+            total_days_in_month = days_in_month[month]
+    else:
+        day += days
+    
+    return date(year, month, day)
+
+def before(date1, days):
+    # Extract year, month, and day components from date1
+    year = date1.year
+    month = date1.month
+    day = date1.day
+    
+    # Define a dictionary containing the number of days in each month
+    days_in_month = {
+        1: 31, 2: 28, 3: 31, 4: 30, 5: 31, 6: 30,
+        7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31
+    }
+    
+    # Calculate total days in the given month
+    total_days_in_month = days_in_month[month]
+    
+    # Check if subtracting days is within the same month
+    if day - days > 0:
+        day -= days
+    else:
+        days -= day
+        while days > 0:
+            month -= 1
+            if month < 1:
+                month = 12
+                year -= 1
+            total_days_in_month = days_in_month[month]
+            day = total_days_in_month - days + 1
+            days = 0
+    
+    return date(year, month, day)
+
+def doda(date1, months):
+    # Extract year and month components from date1
+    year = date1.year
+    month = date1.month
+    
+    # Add the specified number of months
+    month += months
+    
+    # Adjust year if necessary
+    year += (month - 1) // 12
+    month = (month - 1) % 12 + 1
+    
+    return date(year, month, date1.day)  # Retain the same day as date1
+
